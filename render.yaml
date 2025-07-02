@@ -1,0 +1,7 @@
+services:
+  - type: static
+    name: lexyweb 
+    env: docker
+    dockerfilePath: Dockerfile
+    staticPublishPath: public
+    buildCommand: ""

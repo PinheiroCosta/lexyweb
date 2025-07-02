@@ -1,5 +1,6 @@
 # Build output
 public/
+/public/
 *.tar.gz
 
 # Zola cache
