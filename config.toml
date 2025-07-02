@@ -2,7 +2,6 @@ base_url = "https://exemplo.com"
 title = "Lexy Eclipse"
 description = "Presente de aniversário em forma de site :)"
 default_language = "pt"
-theme = "zola-minimal"
 
 [extra]
 autor = "Lexy Eclipse"
