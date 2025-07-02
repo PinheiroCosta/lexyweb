@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<article>
+  <h1>{{ page.title }}</h1>
+  <p><small>{{ page.date | date(format="%d/%m/%Y") }}</small></p>
+  {{ page.content | safe }}
+</article>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% set path = current_path | default(value="/") %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ config.title }}</title>
+    <link rel="stylesheet" href="{{ get_url(path='style.css') }}">
+    <link rel="stylesheet" href="{{ get_url(path='galeria.css') }}">
+    <link rel="stylesheet" href="{{ get_url(path='contato.css') }}">
+    <link rel="stylesheet" href="{{ get_url(path='sobre.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <header>
+      <h1><a href="{{ config.base_url }}">{{ config.title }}</a></h1>
+        <nav>
+          <a href="/" class="{% if path == '/' %}active{% endif %}">Início</a>
+          <a href="/galeria/" class="{% if path == '/galeria/' %}active{% endif %}">Galeria</a>
+          <a href="/sobre/" class="{% if path == '/sobre/' %}active{% endif %}">Sobre</a>
+          <a href="/contato/" class="{% if path == '/contato/' %}active{% endif %}">Contato</a>
+        </nav>
+    </header>
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+    <footer>
+      <p>&copy; {{ config.extra.autor }} • {{ now() | date(format="%Y") }}</p>
+    </footer>
+  </body>
+</html>

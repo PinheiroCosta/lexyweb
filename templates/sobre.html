@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>{{ section.title }}</h2>
+    {% if section.extra.foto %}
+      <img src="/{{ section.extra.foto }}" alt="Foto da artista" class="foto-perfil">
+    {% endif %}
+
+    {{ section.content | safe }}
+
+{% endblock %}

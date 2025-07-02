@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>{{ page.title }}</h2>
+
+  {{ page.content | safe }}
+  {% for media in page.extra.gallery %}
+      {% if media.type == "image" %}
+        <img src="/{{ media.src }}" alt="{{ page.title }}" class="galeria-midia">
+      {% elif media.type == "video" %}
+        <video controls class="galeria-midia">
+          <source src="/{{ media.src }}" type="video/mp4">
+          Seu navegador não suporta vídeo HTML5.
+        </video>
+      {% endif %}
+    {% endfor %}
+
+  <p><a href="{{ get_url(path='galeria') }}">← Voltar para galeria</a></p>
+{% endblock %}
