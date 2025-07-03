@@ -1,11 +1,14 @@
 +++
 title = "Inicio"
-sort_by = "none"
 template = "index.html"
 +++
 
+### ✨ Novidades
+{{ video(path="tattoo-da-bia.mp4") }}
 
-### ✨ Destaques da Galeria
+---
+
+### Destaques da Galeria
 
 <div class="galeria-preview">
   {{ foto(path="solzinho.jpeg") }}
@@ -24,5 +27,4 @@ Acesse a [galeria de fotos](/galeria) com tatuagens, piercings e sessões de tar
 Acesse o formulário de [contato](/contato).  
 Ou me chame pelo WhatsApp:  
 {{ botao(url="https://wa.me/5538997408087", texto="Chamar no WhatsApp") }}
-
 

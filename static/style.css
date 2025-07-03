@@ -76,7 +76,7 @@ nav {
   left: 0;
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   padding: 1rem 2rem;
   background-color: rgba(17, 17, 17, 0.85);
@@ -85,12 +85,12 @@ nav {
 }
 
 .nav-title h1 {
+  font-size: 1.4rem;
   margin: 0;
 }
 .nav-title a {
   font-family: 'Cinzel', serif;
   color: #d4af37;
-  font-size: 1.25rem;
   font-weight: bold;
   text-decoration: none;
 }
@@ -98,9 +98,12 @@ nav {
 .nav-links {
   display: flex;
   gap: 1rem;
+  margin-right: 4rem;
 }
 
 .nav-links a {
+  display: inline-block;
+  margin: auto;
   color: #eee;
   font-weight: bold;
   position: relative;
@@ -125,6 +128,43 @@ nav {
 .nav-links a.active {
   color: #a855f7;
 }
+.menu-toggle {
+  display: none;
+}
+
+.menu-icon {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #eee;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: rgba(17, 17, 17, 0.95);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 20%;
+    padding: 1rem 3rem;
+    z-index: 99;
+  }
+
+  .menu-icon {
+  display: flex;
+  }
+  .menu-toggle:checked ~ .nav-links {
+      display: flex;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 
 /* Rodapé */
 footer {
@@ -180,11 +220,6 @@ a:hover svg {
   font-size: 1.2rem;
   color: #ccc;
   margin-bottom: 2rem;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 body::before {

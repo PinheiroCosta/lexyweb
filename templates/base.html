@@ -14,17 +14,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-        <nav>
-            <div class="nav-title">
-              <h1><a href="{{ config.base_url }}">{{ config.title }}</a></h1>
-            </div>
-            <div class="nav-links">
-              <a href="/" class="{% if path == '/' %}active{% endif %}">Início</a>
-              <a href="/galeria/" class="{% if path == '/galeria/' %}active{% endif %}">Galeria</a>
-              <a href="/sobre/" class="{% if path == '/sobre/' %}active{% endif %}">Sobre</a>
-              <a href="/contato/" class="{% if path == '/contato/' %}active{% endif %}">Contato</a>
-            </div>
-        </nav>
+<nav>
+  <div class="nav-title">
+    <h1><a href="{{ config.base_url }}">{{ config.title }}</a></h1>
+  </div>
+
+  <input type="checkbox" id="menu-toggle" class="menu-toggle">
+  <label for="menu-toggle" class="menu-icon">
+    <svg viewBox="0 0 100 80" width="30" height="30">
+      <rect width="100" height="10" fill="#eee"/>
+      <rect y="30" width="100" height="10" fill="#eee"/>
+      <rect y="60" width="100" height="10" fill="#eee"/>
+    </svg>
+  </label>
+  <div class="nav-links">
+    <a href="/" class="{% if path == '/' %}active{% endif %}">Início</a>
+    <a href="/galeria/" class="{% if path == '/galeria/' %}active{% endif %}">Galeria</a>
+    <a href="/sobre/" class="{% if path == '/sobre/' %}active{% endif %}">Sobre</a>
+    <a href="/contato/" class="{% if path == '/contato/' %}active{% endif %}">Contato</a>
+  </div>
+</nav>
+
     {% block pre_main %}{% endblock %}
     <main>
       {% block content %}{% endblock %}

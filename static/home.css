@@ -50,9 +50,8 @@ ul li::before {
 }
 
 .hero-label {
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
+  position: relative;
+  top: 1rem;
   font-family: 'Cinzel', serif;
   color: #d4af37;
   font-size: 1.4rem;
