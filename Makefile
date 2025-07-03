@@ -7,7 +7,7 @@ serve:
 	docker compose up -d zola-serve
 
 stop:
-	docker compose stop zola-serve
+	docker compose down zola-serve
 
 clean:
 	rm -rf public/*
