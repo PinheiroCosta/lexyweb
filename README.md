@@ -34,4 +34,4 @@ Projeto em desenvolvimento contínuo, com foco na simplicidade, performance e id
 Este repositório é privado e todo o conteúdo é protegido por direitos autorais.  
 A reprodução, redistribuição ou uso sem autorização está proibida.
 
-📘 [Como editar o conteúdo do site](docs/como-editar.md)
+📘 [Como editar o conteúdo do site](https://github.com/PinheiroCosta/lexyweb/wiki/Como-Editar-o-Conte%C3%BAdo-do-site)
