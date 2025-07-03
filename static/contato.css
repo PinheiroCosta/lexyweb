@@ -16,8 +16,10 @@
 
 .form-contato button {
   padding: 0.75rem;
-  background: #000;
+  background: #a855f7;
   color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
   border: none;
   cursor: pointer;
   border-radius: 6px;

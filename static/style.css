@@ -7,6 +7,14 @@ body {
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem;
+  padding-top: 4.5rem; /* ajuste conforme a altura real da nav */
+}
+
+main {
+  background-color: rgba(17, 17, 17, 0.85);
+  padding: 2rem;
+  border-radius: 8px;
+  backdrop-filter: blur(2px);
 }
 
 a {
@@ -63,21 +71,43 @@ img {
 
 /* Navegação */
 nav {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: rgba(17, 17, 17, 0.85);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+}
+
+.nav-title h1 {
+  margin: 0;
+}
+.nav-title a {
+  font-family: 'Cinzel', serif;
+  color: #d4af37;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-links {
   display: flex;
   gap: 1rem;
 }
 
-nav a {
+.nav-links a {
   color: #eee;
   font-weight: bold;
   position: relative;
   transition: color 0.2s ease;
 }
 
-nav a::after {
+.nav-links a::after {
   content: "";
   position: absolute;
   width: 0%;
@@ -88,11 +118,11 @@ nav a::after {
   transition: width 0.3s ease;
 }
 
-nav a:hover::after {
+.nav-links a:hover::after {
   width: 100%;
 }
 
-nav a.active {
+.nav-links a.active {
   color: #a855f7;
 }
 
@@ -102,6 +132,36 @@ footer {
   font-size: 0.9rem;
   color: #666;
   text-align: center;
+}
+.site-footer a {
+  color: #a855f7;
+  text-decoration: none;
+  margin: 0 0.4rem;
+  font-weight: bold;
+}
+svg {
+  width: 24px;
+  height: 24px;
+  fill: #eee;
+  transition: fill 0.3s ease;
+}
+
+a:hover svg {
+  fill: #a855f7;
+}
+
+.icon {
+  color: #a855f7;
+  width: 30px;
+  height: 30px;
+  margin: 0 0.5rem;
+  vertical-align: middle;
+  transition: transform 0.2s;
+}
+
+.icon:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
 }
 
 .pagina-404 {
@@ -125,4 +185,26 @@ footer {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background: #111; /* fallback */
+  background-image: linear-gradient(
+      315deg,
+      rgba(17, 17, 17, 0.9),
+      rgba(58, 0, 88, 0.6)
+    ),
+    url('/uploads/pages/fundo.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: blur(1px);
+  opacity: 0.6;
 }
