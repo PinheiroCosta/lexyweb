@@ -24,13 +24,3 @@ Trabalho com tatuagens autorais, leituras de tarô intuitivas e piercings com fo
 
 Além de artista corporal, também sou musicista — baixo, guitarra e voz fazem parte do meu ritual criativo.
 
----
-
-### 📲 Agende seu horário
-
-Entre em contato pelo WhatsApp:  
-[Enviar mensagem](https://wa.me/SEUNUMEROAQUI)
-
-Ou [acesse a seção de contato](/contato).
-
----
