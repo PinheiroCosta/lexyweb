@@ -9,24 +9,43 @@
     <link rel="stylesheet" href="{{ get_url(path='galeria.css') }}">
     <link rel="stylesheet" href="{{ get_url(path='contato.css') }}">
     <link rel="stylesheet" href="{{ get_url(path='sobre.css') }}">
+    <link rel="stylesheet" href="{{ get_url(path='home.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <header>
-      <h1><a href="{{ config.base_url }}">{{ config.title }}</a></h1>
         <nav>
-          <a href="/" class="{% if path == '/' %}active{% endif %}">Início</a>
-          <a href="/galeria/" class="{% if path == '/galeria/' %}active{% endif %}">Galeria</a>
-          <a href="/sobre/" class="{% if path == '/sobre/' %}active{% endif %}">Sobre</a>
-          <a href="/contato/" class="{% if path == '/contato/' %}active{% endif %}">Contato</a>
+            <div class="nav-title">
+              <h1><a href="{{ config.base_url }}">{{ config.title }}</a></h1>
+            </div>
+            <div class="nav-links">
+              <a href="/" class="{% if path == '/' %}active{% endif %}">Início</a>
+              <a href="/galeria/" class="{% if path == '/galeria/' %}active{% endif %}">Galeria</a>
+              <a href="/sobre/" class="{% if path == '/sobre/' %}active{% endif %}">Sobre</a>
+              <a href="/contato/" class="{% if path == '/contato/' %}active{% endif %}">Contato</a>
+            </div>
         </nav>
-    </header>
+    {% block pre_main %}{% endblock %}
     <main>
       {% block content %}{% endblock %}
     </main>
-    <footer>
-      <p>&copy; {{ config.extra.autor }} • {{ now() | date(format="%Y") }}</p>
+    <footer class="site-footer">
+      <div class="footer-content">
+        {% if config.extra.social %}
+          <p>
+            {% for item in config.extra.social %}
+              <a href="{{ item.url }}" target="_blank" rel="noopener" title="{{ item.name }}">
+                <img src="{{ get_url(path="uploads/icons/" ~ item.icon ~ ".svg") }}" alt="{{ item.name }}" class="icon">
+              </a>
+            {% endfor %}
+          </p>
+        {% endif %}
+        {% if config.extra.email %}
+          <p><a href="mailto:{{ config.extra.email }}">Contato por e-mail</a></p>
+        {% endif %}
+        <p>&copy; {{ now() | date(format="%Y") }} • {{ config.extra.autor }}. Todos os direitos reservados.</p>
+        <p>Desenvolvido por <a href="https://pinheirocosta.com" target="_blank" rel="noopener">Rom Pinheiro</a></p>
+      </div>
     </footer>
   </body>
 </html>

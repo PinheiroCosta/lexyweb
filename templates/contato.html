@@ -1,8 +1,12 @@
 {% extends "base.html" %}
 
+{% block pre_main %}
+  <p>{{ section.content | safe }}</p>
+{% endblock %}
+
+
 {% block content %}
   <h2>{{ section.title }}</h2>
-  <p>{{ section.content | safe }}</p>
 
   <form action="https://pinheirocosta.com/api/contato/" method="POST" class="form-contato">
     <label for="nome">Nome</label>
