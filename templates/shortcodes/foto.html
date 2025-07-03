@@ -1,5 +1,7 @@
+{% set alt_padrao = path | split(pat=".") | first | replace(from="_", to=" ") | capitalize %}
 <img 
   src="{{ get_url(path="uploads/sections/galeria/" ~ path) }}" 
-  alt="{{ alt | default(value="Imagem da galeria") }}" 
+  alt="{{ alt | default(value=alt_padrao) }}" 
   class="galeria-img"
- />
+/>
+
