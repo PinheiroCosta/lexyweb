@@ -1,0 +1,30 @@
+{
+  "ignorePatterns": [
+    {
+      "pattern": "^mailto:"
+    },
+    {
+      "pattern": "^#"
+    },
+    {
+      "pattern": "localhost"
+    },
+    {
+      "pattern": "127\\.0\\.0\\.1"
+    },
+    {
+      "pattern": "render\\.com"
+    },
+    {
+      "pattern": "pinheirocosta\\.com"
+    }
+  ],
+  "httpHeaders": [
+    {
+      "urls": ["https://example.com"],
+      "headers": {
+        "Authorization": "Bearer exampletoken"
+      }
+    }
+  ]
+}
