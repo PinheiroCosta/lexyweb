@@ -234,6 +234,22 @@ a:hover svg {
   justify-content: center;
 }
 
+/* shortcodes */
+.alinha-centro {
+  display: flex;
+  justify-content: center;
+}
+
+.alinha-direita {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.alinha-esquerda {
+  display: flex;
+  justify-content: flex-start;
+}
+
 body::before {
   content: '';
   position: fixed;

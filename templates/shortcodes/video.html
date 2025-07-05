@@ -1,4 +1,15 @@
-<div class="galeria-preview">
+{% set classe_alinhamento = "" %}
+{% if alinhamento is defined %}
+  {% if alinhamento == "centro" %}
+    {% set classe_alinhamento = "alinha-centro" %}
+  {% elif alinhamento == "direita" %}
+    {% set classe_alinhamento = "alinha-direita" %}
+  {% elif alinhamento == "esquerda" %}
+    {% set classe_alinhamento = "alinha-esquerda" %}
+  {% endif %}
+{% endif %}
+
+<div class="{{ classe_alinhamento }}">
 <video controls class="galeria-video">
   <source src="{{ get_url(path="uploads/sections/galeria/" ~ path) }}" type="video/mp4">
   Seu navegador não suporta vídeo.

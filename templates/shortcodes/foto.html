@@ -1,7 +1,19 @@
-{% set alt_padrao = path | split(pat=".") | first | replace(from="_", to=" ") | capitalize %}
-<img 
-  src="{{ get_url(path="uploads/sections/galeria/" ~ path) }}" 
-  alt="{{ alt | default(value=alt_padrao) }}" 
-  class="galeria-img"
-/>
+{% set classe_alinhamento = "" %}
+{% if alinhamento is defined %}
+  {% if alinhamento == "centro" %}
+    {% set classe_alinhamento = "alinha-centro" %}
+  {% elif alinhamento == "direita" %}
+    {% set classe_alinhamento = "alinha-direita" %}
+  {% elif alinhamento == "esquerda" %}
+    {% set classe_alinhamento = "alinha-esquerda" %}
+  {% endif %}
+{% endif %}
 
+{% set alt_padrao = path | split(pat=".") | first | replace(from="_", to=" ") | capitalize %}
+<div class="{{ classe_alinhamento }}">
+    <img 
+      src="{{ get_url(path="uploads/sections/galeria/" ~ path) }}" 
+      alt="{{ alt | default(value=alt_padrao) }}" 
+      class="galeria-img"
+    />
+</div>
