@@ -222,6 +222,13 @@ a:hover svg {
   margin-bottom: 2rem;
 }
 
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
 body::before {
   content: '';
   position: fixed;

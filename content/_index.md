@@ -24,7 +24,5 @@ Acesse a [galeria de fotos](/galeria) com tatuagens, piercings e sessões de tar
 
 ### 📲 Agende seu horário
 
-Acesse o formulário de [contato](/contato).  
-Ou me chame pelo WhatsApp:  
 {{ botao(url="https://wa.me/5538997408087", texto="Chamar no WhatsApp") }}
 

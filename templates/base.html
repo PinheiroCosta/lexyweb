@@ -32,7 +32,6 @@
     <a href="/" class="{% if path == '/' %}active{% endif %}">Início</a>
     <a href="/galeria/" class="{% if path == '/galeria/' %}active{% endif %}">Galeria</a>
     <a href="/sobre/" class="{% if path == '/sobre/' %}active{% endif %}">Sobre</a>
-    <a href="/contato/" class="{% if path == '/contato/' %}active{% endif %}">Contato</a>
   </div>
 </nav>
 
@@ -40,6 +39,25 @@
     <main>
       {% block content %}{% endblock %}
     </main>
+{% set whatsapp = false %}
+{% for item in config.extra.social %}
+  {% if item.name == "WhatsApp" %}
+    {% set_global whatsapp = item %}
+  {% endif %}
+{% endfor %}
+
+{% if whatsapp %}
+  <div class="whatsapp">
+    <a href="{{ whatsapp.url }}" 
+       class="whatsapp-float" 
+       target="_blank" 
+       aria-label="Fale conosco no WhatsApp">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+           alt="WhatsApp" 
+           style="width: 60px; height: 60px;">
+    </a>
+  </div>
+{% endif %}
     <footer class="site-footer">
       <div class="footer-content">
         {% if config.extra.social %}
