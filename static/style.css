@@ -229,6 +229,11 @@ a:hover svg {
     z-index: 100;
 }
 
+.center-horizontal {
+  display: flex;
+  justify-content: center;
+}
+
 body::before {
   content: '';
   position: fixed;
