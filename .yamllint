@@ -1,0 +1,12 @@
+extends: default
+
+ignore: |
+  .github/workflows/*.yml
+  docker-compose.yml
+  render.yaml
+
+rules:
+  document-start: disable
+  line-length: disable
+  trailing-spaces: disable
+  truthy: disable
