@@ -24,3 +24,11 @@ services:
       - .:/data
     working_dir: /data
     entrypoint: yamllint
+
+  markdownlint:
+    image: node:18-alpine
+    volumes:
+      - .:/site
+    working_dir: /site
+    entrypoint: sh
+    command: ["-c", "npm install -g markdown-link-check && markdown-link-check -q -c .mlc_config.json ."]

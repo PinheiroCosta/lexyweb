@@ -1,4 +1,4 @@
-.PHONY: build serve clean stop prune logs lint lint-changed
+.PHONY: build serve clean stop prune logs lint lint-changed lint-md
 
 build:
 	docker compose run --rm zola
@@ -24,3 +24,6 @@ lint:
 
 lint-changed:
 	docker compose run --rm yamllint -f parsable $(shell git diff --name-only | grep -E '\.ya?ml$$' || echo .)
+
+lint-md:
+	docker compose run --rm markdownlint

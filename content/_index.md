@@ -18,7 +18,7 @@ template = "index.html"
 </div>
 
 Quer ver mais do meu trabalho?  
-Acesse a [galeria de fotos](/galeria) com tatuagens, piercings e sessões de tarô.
+Acesse a [galeria de fotos](galeria/) com tatuagens, piercings e sessões de tarô.
 
 ---
 
