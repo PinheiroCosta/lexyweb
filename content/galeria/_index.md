@@ -5,4 +5,4 @@ sort_by = "date"
 page_template = "galeria_item.html"
 +++
 
-Confira abaixo alguns trabalhos de tatuagem, piercing e sessões de tarô.
+Confira abaixo alguns trabalhos de tatuagem, e piercing.
