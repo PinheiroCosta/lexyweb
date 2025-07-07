@@ -41,7 +41,7 @@ jobs:
         run: zola build --output-dir public --force
 
       - name: Adicionar CNAME
-      - run: echo "www.lexyart.com" > public/CNAME
+        run: echo "www.lexyart.com" > public/CNAME
 
       - name: Deploy para GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
