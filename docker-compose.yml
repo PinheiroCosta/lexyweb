@@ -18,3 +18,9 @@ services:
       - "1111:1111"
       - "1024:1024"
 
+  yamllint:
+    image: cytopia/yamllint
+    volumes:
+      - .:/data
+    working_dir: /data
+    entrypoint: yamllint
