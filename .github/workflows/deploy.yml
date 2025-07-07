@@ -68,18 +68,19 @@ jobs:
       - name: Checkout branch main
         uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0
+          path: main_branch
 
-      - name: Gerar nova tag v0.0.X
+      - name: Criar nova tag na main
         run: |
+          cd main_branch
           latest_tag=$(git tag -l "v*.*.*" --sort=-v:refname | head -n 1)
           if [ -z "$latest_tag" ]; then
-            echo "Nenhuma tag encontrada, iniciando em v0.0.1"
             new_tag="v0.0.1"
           else
             IFS='.' read -r major minor patch <<< "${latest_tag#v}"
-            new_patch=$((patch + 1))
-            new_tag="v${major}.${minor}.${new_patch}"
+            new_tag="v${major}.${minor}.$((patch + 1))"
           fi
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
