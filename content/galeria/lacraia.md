@@ -9,4 +9,4 @@ extra.gallery = [
 ]
 +++
 
-### Lacraia doida!!
+### Lacraia doida
