@@ -23,5 +23,4 @@ lint:
 	docker compose run --rm yamllint -f parsable .
 
 lint-changed:
-	docker compose run --rm yamllint -f parsable $(shell git diff --name-only | grep -E '\.ya?ml$$' || true)
-
+	docker compose run --rm yamllint -f parsable $(shell git diff --name-only | grep -E '\.ya?ml$$' || echo .)
