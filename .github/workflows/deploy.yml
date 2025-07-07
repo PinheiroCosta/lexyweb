@@ -65,7 +65,7 @@ jobs:
     needs: sync-content
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repositório
+      - name: Checkout branch main
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
