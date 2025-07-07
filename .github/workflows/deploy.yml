@@ -70,6 +70,37 @@ jobs:
           delete-branch: true
           path: main_branch
 
+  sync-back-content:
+    if: github.ref == 'refs/heads/conteudo'
+    needs: auto-tag
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch conteudo
+        uses: actions/checkout@v4
+        with:
+          ref: conteudo
+          path: conteudo_branch
+
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: main_branch
+
+      - name: Sincronizar alterações de conteúdo da main para conteudo
+        run: |
+          rsync -av --delete main_branch/content/ conteudo_branch/content/
+          rsync -av main_branch/config.toml conteudo_branch/config.toml
+          rsync -av main_branch/README.md conteudo_branch/README.md
+          rsync -av main_branch/static/robots.txt conteudo_branch/static/robots.txt
+          rsync -av --delete main_branch/static/uploads/ conteudo_branch/static/uploads/
+          cd conteudo_branch
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "chore(content): mantém branch conteudo atualizada com a main"
+          git push origin conteudo
+
   build-and-deploy:
     if: startsWith(github.ref, 'refs/tags/v')
     needs: validate
