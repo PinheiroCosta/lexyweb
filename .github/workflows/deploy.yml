@@ -1,0 +1,100 @@
+name: Deploy Zola site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - conteudo
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Validar YAML
+        run: |
+          find . -type f \( -name '*.yaml' -o -name '*.yml' \) | xargs -I {} yamllint {}
+
+      - name: Validar Markdown (links quebrados)
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          use-quiet-mode: 'yes'
+          config-file: '.mlc_config.json'
+
+  sync-content:
+    if: github.ref == 'refs/heads/conteudo'
+    needs: validate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout branch main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: main_branch
+
+      - name: Checkout branch conteudo
+        uses: actions/checkout@v4
+        with:
+          ref: conteudo
+          path: conteudo_branch
+
+      - name: Copiar conteúdo permitido
+        run: |
+          rsync -av --delete conteudo_branch/content/ main_branch/content/
+          rsync -av conteudo_branch/config.toml main_branch/config.toml
+          rsync -av conteudo_branch/README.md main_branch/README.md
+          rsync -av conteudo_branch/static/robots.txt main_branch/static/robots.txt
+          rsync -av --delete conteudo_branch/static/uploads/ main_branch/static/uploads/
+
+      - name: Criar Pull Request para main
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore(content): sincroniza conteúdo da branch conteudo'
+          title: 'Atualização de conteúdo da cliente'
+          body: |
+            Este PR foi criado automaticamente a partir da branch conteudo.
+            Apenas os arquivos de conteúdo permitidos foram sincronizados:
+            - config.toml
+            - README.md
+            - content/*
+            - static/robots.txt
+            - static/uploads/*
+          base: main
+          branch: conteudo-sync
+          delete-branch: true
+          path: main_branch
+
+  build-and-deploy:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: validate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Instalar Zola
+        run: |
+          curl -sSL https://github.com/getzola/zola/releases/download/v0.19.1/zola-v0.19.1-x86_64-unknown-linux-gnu.tar.gz \
+            | tar -xz
+          sudo mv zola /usr/local/bin
+
+      - name: Build do site
+        run: zola build --output-dir public --force
+
+      - name: Adicionar CNAME
+        run: echo "www.lexyart.com" > public/CNAME
+
+      - name: Deploy para GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages
+          force_orphan: true
