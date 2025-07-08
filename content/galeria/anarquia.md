@@ -5,5 +5,3 @@ extra.gallery = [
   { type = "image", src = "uploads/sections/galeria/anarquia.jpg" },
 ]
 +++
-
-### Anarquia

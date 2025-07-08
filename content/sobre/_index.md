@@ -1,10 +1,10 @@
 +++
+title = "Sobre mim"
 template = "sobre.html"
 extra.foto = "uploads/sections/sobre/perfil.jpg"
 +++
 
 
-### ✨ Sobre mim
 Com agulha ou tarô, cada traço e cada carta contam uma história.  
 Trabalho com tatuagens autorais, leituras de tarô intuitivas e piercings com foco em biossegurança e estilo.
 

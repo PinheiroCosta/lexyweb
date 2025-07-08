@@ -7,10 +7,14 @@
     <meta name="robots" content="noindex">
     <title>{% if page.title %}{{ page.title }} | {% endif %}{{ config.title }}</title>
     <link rel="stylesheet" href="{{ get_url(path='style.css') }}">
-    <link rel="stylesheet" href="{{ get_url(path='galeria.css') }}">
-    <link rel="stylesheet" href="{{ get_url(path='contato.css') }}">
-    <link rel="stylesheet" href="{{ get_url(path='sobre.css') }}">
     <link rel="stylesheet" href="{{ get_url(path='home.css') }}">
+    {% if config.extra.navbar %}
+        {% for link in config.extra.navbar %}
+            <link
+                rel="stylesheet"
+                href="{{ get_url(path=link.path) }}.css">
+        {% endfor %}
+    {% endif %}
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
@@ -30,8 +34,14 @@
   </label>
   <div class="nav-links">
     <a href="/" class="{% if path == '/' %}active{% endif %}">Início</a>
-    <a href="/galeria/" class="{% if path == '/galeria/' %}active{% endif %}">Galeria</a>
-    <a href="/sobre/" class="{% if path == '/sobre/' %}active{% endif %}">Sobre</a>
+    {% if config.extra.navbar %}
+        {% for link in config.extra.navbar %}
+            <a href="{{ link.path }}"
+               class="{% if path == link.path %}active{% endif %}">
+              {{ link.path | replace(from="/", to="") }}
+            </a>
+        {% endfor %}
+    {% endif %}
   </div>
 </nav>
 
@@ -51,8 +61,8 @@
     <a href="{{ whatsapp.url }}" 
        class="whatsapp-float" 
        target="_blank" 
-       aria-label="Fale conosco no WhatsApp">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+       aria-label="Fale comigo no WhatsApp">
+      <img src="{{ get_url(path="uploads/icons/whatsapp-icon-color.svg") }}" 
            alt="WhatsApp" 
            style="width: 60px; height: 60px;">
     </a>
@@ -73,7 +83,7 @@
           <p><a href="mailto:{{ config.extra.email }}">Contato por e-mail</a></p>
         {% endif %}
         <p>&copy; {{ now() | date(format="%Y") }} • {{ config.extra.autor }}. Todos os direitos reservados.</p>
-        <p>Desenvolvido por <a href="https://pinheirocosta.com" target="_blank" rel="noopener">Rom Pinheiro</a></p>
+        <p>Desenvolvido por <a href="https://pinheirocosta.com" target="_blank" rel="noopener">Rom</a></p>
       </div>
     </footer>
   </body>

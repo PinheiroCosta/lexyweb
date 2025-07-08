@@ -9,4 +9,7 @@ social = [
   { name = "Instagram", url = "https://instagram.com/lexyeclipse", icon = "instagram" },
   { name = "WhatsApp", url = "https://wa.me/5538997408087", icon = "whatsapp" }
 ]
-
+navbar = [
+    { path = "/galeria/" },
+    { path = "/sobre/" },
+]

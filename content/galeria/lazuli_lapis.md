@@ -7,4 +7,3 @@ extra.gallery = [
 ]
 +++
 
-### Lazuli Lapis
