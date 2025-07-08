@@ -29,6 +29,7 @@ ul li::before {
 
 .hero-triplo {
   display: flex;
+  flex-wrap: wrap;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0,0,0,0.4);
@@ -37,6 +38,7 @@ ul li::before {
 
 .hero-col {
   flex: 1;
+  min-width: 0;
   height: 250px;
   background-size: cover;
   background-position: center;
@@ -61,3 +63,11 @@ ul li::before {
   border-radius: 4px;
 }
 
+@media (max-width: 600px) {
+  .hero-triplo {
+    flex-direction: column;
+  }
+  .hero-col {
+    min-height: 200px; /* opcional para melhorar proporção */
+  }
+}
