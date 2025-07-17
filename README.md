@@ -20,10 +20,10 @@ Este projeto utiliza o gerador de sites estáticos [Zola](https://www.getzola.or
 
 ## 📁 Estrutura
 
-- content/  -> _Conteúdo em Markdown (galeria, sobre, contato)_  
-- static/  -> _Arquivos estáticos (CSS, imagens, vídeos)_  
-- templates/  -> _Templates HTML (base, galeria, etc)_  
-- public/ -> _Output gerado pelo Zola (não incluído no versionamento)_  
+content/ # Conteúdo em Markdown (galeria, sobre, contato)
+static/ # Arquivos estáticos (CSS, imagens, vídeos)
+templates/ # Templates HTML (base, galeria, etc)
+public/ # Output gerado pelo Zola (não incluído no versionamento)
 
 ## 🚧 Status
 
@@ -31,7 +31,7 @@ Projeto em desenvolvimento contínuo, com foco na simplicidade, performance e id
 
 ## 🔒 Licença
 
-Este repositório é de uso privado e todo o conteúdo é protegido por direitos autorais.  
+Este repositório é privado e todo o conteúdo é protegido por direitos autorais.  
 A reprodução, redistribuição ou uso sem autorização está proibida.
 
 📘 [Como editar o conteúdo do site](https://github.com/PinheiroCosta/lexyweb/wiki/Como-Editar-o-Conte%C3%BAdo-do-site)
